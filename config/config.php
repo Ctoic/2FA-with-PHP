@@ -1,5 +1,5 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=SPARTA';
+$dsn = 'mysql:host=localhost;dbname=xeros';
 $username = 'root';
 $password = 'MyStrongPassword1234$';
 

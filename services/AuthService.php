@@ -10,13 +10,11 @@ class AuthService {
     }
 
     public function registerUser(AuthModel $model) {
-        $secret = $this->generateSecret();
-        $hashedPassword = $this->hashPassword($model->password);
-
-        $stmt = $this->pdo->prepare("INSERT INTO users (username, passwordHash, secret) VALUES (?, ?, ?)");
-        return $stmt->execute([$model->username, $hashedPassword, $secret]);
+    $secret = $this->generateSecret();
+    $hashedPassword = $this->hashPassword($model->password);
+    $stmt = $this->pdo->prepare("INSERT INTO users (username, passwordHash, secret, profile_image) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$model->username, $hashedPassword, $secret, $model->profile_image]);
     }
-
     public function authenticateUser(AuthModel $model) {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$model->username]);

@@ -1,5 +1,6 @@
 <?php
-session_start();
+//session_start();
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,6 +11,8 @@ require_once '../services/AuthService.php';
 require_once '../controllers/AuthController.php';
 require_once '../controllers/TodoController.php';
 require_once '../models/TodoModel.php';
+require_once '../models/AuthModel.php';
+require_once '../models/User.php';
 
 
 $authService = new AuthService($pdo);

@@ -6,5 +6,16 @@ class Todo {
     public $description;
     public $completed;
 
+    // comtructor and initializinf 
+
+    function __construct()
+    {
+        
+    }
+
+
+
 }
+
+
 ?>

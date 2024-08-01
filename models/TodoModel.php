@@ -31,5 +31,7 @@ class TodoModel {
         $stmt->execute([$user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+  
 }
 ?>
