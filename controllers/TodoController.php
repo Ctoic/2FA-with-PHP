@@ -38,7 +38,7 @@ class TodoController {
                 $this->todoModel->deleteTodo($id);
             }
         }
-
+        $user_id = $_POST['user_id'];
         $todos = $this->todoModel->getTodos($user_id);
         include '../views/dashborad.php';
 

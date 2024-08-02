@@ -12,6 +12,7 @@ class AuthController {
     }
 
     public function signup() {
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -48,7 +49,7 @@ class AuthController {
                 // Register the user
                 $result = $this->authService->registerUser($model);
                 if ($result) {
-                    header('Location: ../views/auth/twofactor.html');
+                    header('Location: ../views/auth/twofactor.php');
                 } else {
                     echo "Registration failed.";
                 }
@@ -68,7 +69,7 @@ class AuthController {
             if ($user) {
                 session_start();
                 $_SESSION['username'] = $user;
-                header('Location: /myapp/views/dashborad.html');
+                header('Location: /myapp/views/dashborad.php');
             } else {
             }
         } else {
@@ -96,7 +97,9 @@ class AuthController {
             if (isset($_SESSION['username'])) {
                 $user = $_SESSION['username'];
                 $qrCodeUrl = $this->authService->generateQrCode('MyApp', $user->username, $user->secret);
-                include '../views/auth/twofactor.html';
+                echo $qrCodeUrl;
+                echo "hell";
+                include '../views/auth/twofactor.php';
             } else {
                 echo "User session not found.";
             }

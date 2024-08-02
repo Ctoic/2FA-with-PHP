@@ -30,8 +30,8 @@ class AuthService {
     }
 
     public function generateQrCode($appName, $appInfo, $secret) {
-        $url = "https://www.authenticatorApi.com/pair.aspx?AppName={$appName}&AppInfo={$appInfo}&SecretCode={$secret}";
-        return $url;
+            $qrCodeUrl = "https://www.authenticatorApi.com/pair.aspx?AppName=" . urlencode($appName) . "&AppInfo=" . urlencode($appInfo) . "&SecretCode=" . urlencode($secret);
+            return $qrCodeUrl;
     }
 
     public function verifyTwoFactorCode($secret, $code) {
